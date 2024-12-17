@@ -7,7 +7,7 @@ This project is a simple e-commerce application screen designed to display produ
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/project-name.git
+   https://github.com/SariaMahmood20/patch_assignment
 2. Install dependencies:
    ```bash
    flutter pub get
