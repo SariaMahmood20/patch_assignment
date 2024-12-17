@@ -8,6 +8,7 @@ import 'package:patch_assignment/app/services/app_exceptions.dart';
 
 class NetworkApiResponse extends BaseApiService{
   @override
+  //Fetches response which is then used in repository to fetch data from API Endpoint
   Future<dynamic> getGetApiResponse(String urlPath) async{
     dynamic responseJson;
     try{
@@ -19,11 +20,11 @@ class NetworkApiResponse extends BaseApiService{
     return responseJson;
   }
 
+  //Returns response
   dynamic returnResponse(http.Response response){
     switch(response.statusCode){
       case 200:
         dynamic responseJson = jsonDecode(response.body);
-        print(responseJson);
         return responseJson;
       case 400:
         return FetchBadRequestException();

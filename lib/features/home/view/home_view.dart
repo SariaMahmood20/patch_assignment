@@ -23,6 +23,7 @@ class HomeView extends StatelessWidget {
       child: Stack(
         alignment: Alignment.topCenter,
         children: [
+          //Background
           Container(
             height: 50.h,
             width: double.infinity,
@@ -66,6 +67,7 @@ class HomeView extends StatelessWidget {
                                 SizedBox(
                                   height: 130,
                                   width: double.infinity,
+                                  //Categories list
                                   child: ListView.builder(
                                     scrollDirection: Axis.horizontal,
                                     itemCount:
@@ -77,16 +79,17 @@ class HomeView extends StatelessWidget {
                                       return CategoryWidget(
                                         categoryImageUrl: productProvider
                                                 .categoryImage[
-                                            index], // Use actual URL if available
+                                            index], 
                                         categoryName: category,
                                         isSelected: productProvider
                                                 .selectedCategoryIndex ==
                                             index,
+                                            //Sorting products by with respect to selected Category
                                         onPressed: () {
                                           productProvider
                                               .getSelectedCategory(category);
                                           productProvider.sortByCategories(
-                                              category); // Sort products
+                                              category); 
                                         },
                                       );
                                     },
@@ -96,10 +99,12 @@ class HomeView extends StatelessWidget {
                                 Expanded(
                                   child: Builder(
                                     builder: (_) {
+                                      //Products list
                                       final products = productProvider
                                               .filteredByCategory.isNotEmpty
                                               ? productProvider.filteredByCategory
                                             : productProvider.products.data!;
+                                      //Profucts filtered by search query list
                                       final filteredProducts =
                                           products.where((product) {
                                         final query = searchBarController.text.toLowerCase();
@@ -150,6 +155,7 @@ class HomeView extends StatelessWidget {
                                                     onPressed: () {
                                                       productProvider.lowestFirst();
                                                     },
+                                                    //Bool check to find out whether the button is clicked or not
                                                     isSelected:
                                                         productProvider.lowest,
                                                   ),
@@ -162,6 +168,7 @@ class HomeView extends StatelessWidget {
                                                     onPressed: () {
                                                       productProvider.highestFirst();
                                                     },
+                                                    //Bool value to check whether the button is clicked or not
                                                     isSelected:
                                                         productProvider.highest,
                                                   )
@@ -171,6 +178,7 @@ class HomeView extends StatelessWidget {
                                             SizedBox(
                                               height: 7.h,
                                             ),
+                                            //Grid to show the products
                                             Expanded(
                                               child: GridView.builder(
                                                   gridDelegate:
@@ -180,6 +188,7 @@ class HomeView extends StatelessWidget {
                                                     mainAxisSpacing: 10.0,
                                                     childAspectRatio: 0.8,
                                                   ),
+                                                  //Check on products, if search query is empty then the actua; products list is selected else filtered is selected
                                                   itemCount: searchBarController.text.isEmpty? products.length: filteredProducts.length,
                                                   itemBuilder:
                                                       (context, index) {

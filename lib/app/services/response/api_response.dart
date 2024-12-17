@@ -12,6 +12,7 @@ class ApiResponse<T>{
   ApiResponse.completed(this.data): status = Status.completed;
   ApiResponse.failed(): status = Status.failed;
 
+  @override
   String toString(){
     return 'Message: $message Status: $status Data: $data';
   }

@@ -13,6 +13,7 @@ class SearchBarWidget extends StatelessWidget {
     return Card(
       elevation: 5.h,
       child: TextFormField(
+        //To shortlist the products based on search query
         onChanged: (value){onPressed(value);},
         controller: controller,
         decoration: InputDecoration(

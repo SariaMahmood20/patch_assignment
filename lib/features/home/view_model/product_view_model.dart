@@ -40,7 +40,7 @@ class ProductViewModel extends ChangeNotifier {
     try {
       final value = await _productRepo.getProducts();
       _setList(ApiResponse.completed(value));
-      _extractCategories(); // Process categories immediately after fetching data
+      _extractCategories();
     } catch (error) {
       _setList(ApiResponse.failed());
     }
@@ -55,10 +55,8 @@ class ProductViewModel extends ChangeNotifier {
   //Extract the categories from the list of products
   void _extractCategories() {
     if (_products.data != null && _products.data!.isNotEmpty) {
-      _categories = _products.data!
-          .map((product) => product.category)
-          .toSet()
-          .toList(); // Extract and deduplicate categories
+      _categories =
+          _products.data!.map((product) => product.category).toSet().toList();
       notifyListeners();
     }
   }
@@ -116,12 +114,15 @@ class ProductViewModel extends ChangeNotifier {
     }
   }
 
-  Future<void> filterProducts(String query)async{
-    if(_products.data!.isNotEmpty && products.data != null){
-      if(query.isEmpty){
+  Future<void> filterProducts(String query) async {
+    if (_products.data!.isNotEmpty && products.data != null) {
+      if (query.isEmpty) {
         filteredProducts = _products.data!;
-      }else{
-        filteredProducts = _products.data!.where((product)=> product.title.toLowerCase().contains(query.toLowerCase())).toList();
+      } else {
+        filteredProducts = _products.data!
+            .where((product) =>
+                product.title.toLowerCase().contains(query.toLowerCase()))
+            .toList();
       }
       notifyListeners();
     }

@@ -55,10 +55,10 @@ class CategoryWidget extends StatelessWidget {
                             AppTheme.gradientLightColor
                           ],
                         )
-                      : null, // Gradient only if selected
+                      : null, 
                 ),
                 child: Padding(
-                    padding: EdgeInsets.all(3.w), // Width of the border ring
+                    padding: EdgeInsets.all(3.w), 
                     child: CircleAvatar(
                       backgroundColor: Colors.white,
                       foregroundImage: NetworkImage(categoryImageUrl),

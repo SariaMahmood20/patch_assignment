@@ -4,10 +4,12 @@ class AppExceptions implements Exception{
 
   AppExceptions(this.message, this.prefix);
 
+  @override
   String toString(){
     return '$message';
   }
 }
+
 
 class FetchDataException extends AppExceptions{
   FetchDataException([String? message]): super(message, "Error while communicating!");

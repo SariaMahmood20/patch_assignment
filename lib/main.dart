@@ -5,8 +5,6 @@ import 'package:provider/provider.dart';
 
 
 import 'package:patch_assignment/features/home/view_model/product_view_model.dart';
-import 'package:patch_assignment/features/home/view/home_view.dart';
-import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 
 void main() {
