@@ -17,6 +17,16 @@ class CategoryWidget extends StatelessWidget {
       this.isSelected = false,
       required this.onPressed});
 
+  // Capitalize the first letter of each word in the category name
+  String _capitalizeWords(String text) {
+    return text.split(' ').map((word) {
+      if (word.isNotEmpty) {
+        return word[0].toUpperCase() + word.substring(1).toLowerCase();
+      }
+      return word;
+    }).join(' ');
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -32,7 +42,7 @@ class CategoryWidget extends StatelessWidget {
             },
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
-              //Category Image
+              // Category Image
               child: Container(
                 height: 75.h,
                 width: 75.w,
@@ -60,10 +70,10 @@ class CategoryWidget extends StatelessWidget {
           SizedBox(
             height: 7.h,
           ),
-          //Category Title
+          // Category Title with capitalized words
           Text(
-            categoryName,
-            style: TextStyle(fontSize: 10.sp),
+            _capitalizeWords(categoryName),
+            style: TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w500),
           )
         ],
       ),

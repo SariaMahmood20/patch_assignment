@@ -26,6 +26,7 @@ class MainApp extends StatelessWidget {
             ChangeNotifierProvider(create: (context)=> ProductViewModel())
           ],
           child: MaterialApp(
+            debugShowCheckedModeBanner: false,
             theme: ThemeData(
               fontFamily: 'SFPRODISPLAY'
             ),

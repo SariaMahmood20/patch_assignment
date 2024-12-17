@@ -180,7 +180,7 @@ class HomeView extends StatelessWidget {
                                                     mainAxisSpacing: 10.0,
                                                     childAspectRatio: 0.8,
                                                   ),
-                                                  itemCount: products.length,
+                                                  itemCount: searchBarController.text.isEmpty? products.length: filteredProducts.length,
                                                   itemBuilder:
                                                       (context, index) {
                                                     final product =
