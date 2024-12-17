@@ -5,13 +5,15 @@ import 'package:patch_assignment/app/resources/app_strings.dart';
 
 class SearchBarWidget extends StatelessWidget {
   final TextEditingController controller;
-  const SearchBarWidget({super.key, required this.controller});
+  final Function(String query) onPressed;
+  const SearchBarWidget({super.key, required this.controller, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 5.h,
       child: TextFormField(
+        onChanged: (value){onPressed(value);},
         controller: controller,
         decoration: InputDecoration(
             prefixIcon: const Icon(Icons.search),

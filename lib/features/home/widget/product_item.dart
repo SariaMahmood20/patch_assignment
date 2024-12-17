@@ -33,7 +33,7 @@ class ProductItem extends StatelessWidget {
             width: 170.w,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage(productImageUrl),
+                image: NetworkImage(productImageUrl, ),
                 fit: BoxFit.fill,
               ),
             ),

@@ -116,5 +116,16 @@ class ProductViewModel extends ChangeNotifier {
     }
   }
 
+  Future<void> filterProducts(String query)async{
+    if(_products.data!.isNotEmpty && products.data != null){
+      if(query.isEmpty){
+        filteredProducts = _products.data!;
+      }else{
+        filteredProducts = _products.data!.where((product)=> product.title.toLowerCase().contains(query.toLowerCase())).toList();
+      }
+      notifyListeners();
+    }
+  }
+
   //Add more methods down here
 }
