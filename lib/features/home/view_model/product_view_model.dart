@@ -12,6 +12,7 @@ class ProductViewModel extends ChangeNotifier {
   ApiResponse<List<Product>> _products = ApiResponse.loading();
   ApiResponse<List<Product>> get products => _products;
 
+  //Bool checkers to keep track if buttons are pressed or not
   bool highest = false;
   bool lowest = false;
 
