@@ -57,7 +57,7 @@ Once app starts running, you will see following options:
      - Flutter
  - Libraries:
      - **provider**: State Management
-     - **flutter_screenutil **: Responsive UI design
+     - **flutter_screenutil**: Responsive UI design
      - **http**: Fetch products data from API
      - **persistent_bottom_nav_bar**: Bottom Navigation
      - **skeletonizer**: Shimmer Effect
