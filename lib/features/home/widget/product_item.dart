@@ -50,7 +50,7 @@ class ProductItem extends StatelessWidget {
             style: TextStyle(fontSize: 10.sp, color: Colors.grey),
             textAlign: TextAlign.left,
             maxLines: 2, // Limit to 2 lines
-            overflow: TextOverflow.ellipsis, // Add ellipsis for overflow
+            overflow: TextOverflow.ellipsis,
           ),
           Text(
             "\$${productPrice.toString()}",

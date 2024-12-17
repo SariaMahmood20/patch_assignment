@@ -20,6 +20,19 @@ dev_dependencies:
   flutter_screenutil: ^5.9.3
   persistent_bottom_nav_bar: ^6.2.1
   google_fonts: ^6.2.1
+  skeletonizer: ^1.4.2
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/fonts/
+  fonts:
+    - family: 'SFPRODISPLAY'
+      fonts:
+        - asset: assets/fonts/SFPRODISPLAYREGULAR.OTF
+        - asset: assets/fonts/SFPRODISPLAYBOLD.OTF
+          weight: 700
+        - asset: assets/fonts/SFPRODISPLAYMEDIUM.OTF
+          weight: 500
+        - asset: assets/fonts/SFPRODISPLAYLIGHTITALIC.OTF
+          style: italic

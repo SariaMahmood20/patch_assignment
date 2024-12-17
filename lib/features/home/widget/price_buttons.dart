@@ -7,14 +7,17 @@ import 'package:patch_assignment/app/resources/app_theme.dart';
 class PriceButtons extends StatelessWidget {
   final String buttonText;
   final Function onPressed;
-  PriceButtons({super.key, required this.buttonText, required this.onPressed, this.isSelected = false});
+  PriceButtons(
+      {super.key,
+      required this.buttonText,
+      required this.onPressed,
+      this.isSelected = false});
   bool isSelected;
-
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
+      onTap: () {
         isSelected = true;
         onPressed();
       },
@@ -22,11 +25,13 @@ class PriceButtons extends StatelessWidget {
         width: 140.w,
         height: 35.h,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4),
-          color: isSelected? AppTheme.primaryColor: Colors.black26
-        ),
+            borderRadius: BorderRadius.circular(4),
+            color: isSelected ? AppTheme.primaryColor : Colors.black26),
         child: Center(
-          child: Text(buttonText, style: TextStyle(color: isSelected? Colors.white: Colors.black),),
+          child: Text(
+            buttonText,
+            style: TextStyle(color: isSelected ? Colors.white : Colors.black),
+          ),
         ),
       ),
     );

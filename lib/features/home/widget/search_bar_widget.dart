@@ -14,14 +14,14 @@ class SearchBarWidget extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         decoration: InputDecoration(
-          prefixIcon: const Icon(Icons.search),
-          hintText: AppStrings.whatAreYouLookingFor,
-          hintStyle: TextStyle(fontSize: 15.sp),
-          fillColor: Colors.white,
-          filled: true,
-          border: OutlineInputBorder(borderRadius: BorderRadius.circular(10), borderSide: BorderSide.none)
-        ),
-        
+            prefixIcon: const Icon(Icons.search),
+            hintText: AppStrings.whatAreYouLookingFor,
+            hintStyle: TextStyle(fontSize: 15.sp),
+            fillColor: Colors.white,
+            filled: true,
+            border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(10),
+                borderSide: BorderSide.none)),
       ),
     );
   }

@@ -8,6 +8,7 @@ import 'package:patch_assignment/features/home/widget/price_buttons.dart';
 import 'package:patch_assignment/features/home/widget/product_item.dart';
 import 'package:patch_assignment/features/home/widget/search_bar_widget.dart';
 import 'package:patch_assignment/app/resources/app_theme.dart';
+import 'package:patch_assignment/features/home/widget/loading_screen.dart';
 
 import 'package:patch_assignment/features/home/view_model/product_view_model.dart';
 import 'package:patch_assignment/app/services/response/status.dart';
@@ -39,7 +40,7 @@ class HomeView extends StatelessWidget {
                       builder: (context, productProvider, child) {
                         switch (productProvider.products.status) {
                           case Status.loading:
-                            return const CircularProgressIndicator();
+                            return const LoadingScreen();
                           case Status.failed:
                             return const Center(
                               child: Text("Failed to access data"),
@@ -70,8 +71,9 @@ class HomeView extends StatelessWidget {
                                         return CategoryWidget(
                                           categoryImageUrl: productProvider.categoryImage[index], // Use actual URL if available
                                           categoryName: category,
-                                          isSelected: true,
+                                          isSelected: productProvider.selectedCategoryIndex == index,
                                           onPressed: () {
+                                            productProvider.getSelectedCategory(category);
                                             productProvider
                                                 .sortByCategories(category); // Sort products
                                           },
@@ -80,8 +82,6 @@ class HomeView extends StatelessWidget {
                                     ),
                                   ),
                                   SizedBox(height: 7.h),
-            
-                                  // Product Section
                                   Expanded(
                                     child: Builder(
                                       builder: (_) {
@@ -97,9 +97,9 @@ class HomeView extends StatelessWidget {
                                             ),
                                           );
                                         }
-            
                                         return Expanded(
                                           child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
                                               SizedBox(height: 7.h,),
                                               Text("${products.length} ${AppStrings.productsToChooseFrom}", style: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w700),textAlign: TextAlign.left,),
@@ -136,12 +136,23 @@ class HomeView extends StatelessWidget {
                                                   itemCount: products.length,
                                                   itemBuilder: (context, index) {
                                                     final product = products[index];
-                                                    return ProductItem(
-                                                      productDescription: product.description,
-                                                      productImageUrl: product.image,
-                                                      productPrice: product.price,
-                                                      productTitle: product.title,
-                                                    );
+                                                    if(searchBarController.text.isNotEmpty){
+                                                      if(product.title.contains(searchBarController.text)){
+                                                        return ProductItem(
+                                                          productDescription: product.description,
+                                                          productImageUrl: product.image,
+                                                          productPrice: product.price,
+                                                          productTitle: product.title,
+                                                        );
+                                                      }
+                                                    }else{
+                                                        return ProductItem(
+                                                          productDescription: product.description, 
+                                                          productImageUrl: product.image, 
+                                                          productPrice: product.price, 
+                                                          productTitle: product.title
+                                                        );
+                                                      }
                                                   },
                                                 ),
                                               ),
